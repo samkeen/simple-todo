@@ -18,10 +18,10 @@ pub struct TodoCollection {
 }
 
 impl TodoCollection {
-    pub fn new(persist_file_path: String) -> Self {
+    pub fn new(persist_file_path: &str) -> Self {
         TodoCollection {
             todos: TodoCollection::get_existing_todos(&persist_file_path),
-            persist_file_path
+            persist_file_path: persist_file_path.to_string()
         }
     }
 
@@ -71,12 +71,9 @@ impl TodoCollection {
     }
 
     fn generate_id() -> String {
-        let current_time = Utc::now().to_string();
         let mut hasher = Sha256::new();
-        hasher.update(current_time);
-        let result = hasher.finalize();
-        let hex_string = hex::encode(result);
-        hex_string[..6].to_string()
+        hasher.update(Utc::now().to_string());
+        hex::encode(hasher.finalize())[..6].to_string()
     }
     fn persist(&self) {
         let serialized = serde_json::to_string(&self.todos).expect("Failed to serialize data");

@@ -1,6 +1,5 @@
 use std::env;
 use std::process::exit;
-use std::string::ToString;
 use todo_collection::TodoCollection;
 
 fn main() {
@@ -21,7 +20,7 @@ fn main() {
     let persist_file_path = persist_file_path
         .to_str()
         .expect("Failed to derive the absolute path to the todo.json file");
-    let mut todos = TodoCollection::new(persist_file_path.to_string());
+    let mut todos = TodoCollection::new(persist_file_path);
 
     match command {
         "add" => match args.get(2) {
