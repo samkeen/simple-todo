@@ -291,6 +291,13 @@ dependencies = [
 name = "todo"
 version = "0.1.0"
 dependencies = [
+ "todo_collection",
+]
+
+[[package]]
+name = "todo_collection"
+version = "0.1.0"
+dependencies = [
  "chrono",
  "hex",
  "serde",

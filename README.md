@@ -1,30 +1,34 @@
 # Todo 
 
 ## Summary
+This is an extremely simple todo list app build to help learn the basics of Rust.
 
-This is a simple todo list app build to help learn the basics of Rust.
-Purposefully not using a framework like Clap, want to solidify the basics first.
+Purposefully not using a CLI framework like Clap.  Rather I want to solidify the basics first.
 
-## Features
-
-This is a simple CLI based Todo app
-The commands are
-- new (add a new todo)
-- list (list all todos)
-- complete
+## Usage
 
 Example
 ```
-$ todo add "Clean the garage"
+❯ todo
+No command given
+USAGE: todo <command> [arg]
+Known commands:
+todo add "todo description"
+todo list
+done <id of todo>
 
-$ todo list
-[1] Go for a walk
-[2] Clean the garage
 
-$ todo done 1
+❯ todo list
+== Existing todos ==
+[afce43] this is a test todo
 
-$ todo list
-[2] Clean the garage
+❯ todo add "learn Rust"
+Added Todo[633d00] 'learn Rust'
+
+❯ todo list
+== Existing todos ==
+[afce43] this is a test todo
+[633d00] learn Rust
 ```
 
 The todos are stored in a file called `todos.json` in the current directory.
